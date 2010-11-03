@@ -1,0 +1,22 @@
+sqlite:
+  adapter: sqlite
+  database: vendor/plugins/fb_opengraph/test/db/fb_opengraph.sqlite.db
+ 
+sqlite3:
+  adapter: sqlite3
+  database: vendor/plugins/fb_opengraph/test/fb_opengraph.sqlite3.db
+ 
+postgresql:
+  adapter: postgresql
+  username: 
+  password: 
+  database: fb_opengraph_test
+  min_messages: ERROR
+ 
+mysql:
+  adapter: mysql
+  host: localhost
+  username: root
+  password: 
+  database: fb_opengraph_test
+

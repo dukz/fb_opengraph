@@ -1,0 +1,36 @@
+=fb_opengraph
+
+Allows you to easily define and render Open Graph Protocol metadata within your ActiveRecord model definition.
+
+==Install
+
+  rails plugin install http://github.com/dukz/fb_opengraph.git
+
+==Quick Start
+
+In your model: Create a map of Open Graph Protocol values with your model's fields or methods
+
+  class Movie < ActiveRecord::Base
+	has_fb_opengraph  :type => 'movie',
+					  :title => :title,
+					  :description => :description
+  end
+
+In your layout: Create a yield block for the meta tags (I'd recommend using :fb_opengraph for conventions)
+
+  <html>
+  <head>
+	...
+	<%= yield :fb_opengraph %>
+	...
+  </head>
+  ... 
+
+In the view: Create a content_for block to render the Open Graph meta tags
+
+  <% content_for :fb_opengraph do %>
+	<%= raw @movie.fb_opengraph_meta_tags %>
+  <% end %>
+
+  
+Copyright (c) 2010 Andrew Angelo Ang, released under the MIT license
