@@ -19,17 +19,18 @@ In your model: Create a map of Open Graph Protocol values with your model's fiel
 In your layout: Create a yield block for the meta tags (I'd recommend using :fb_opengraph for conventions)
 
   <html>
-  <head>
-	...
-	<%= yield :fb_opengraph %>
-	...
-  </head>
-  ... 
+	<head>
+	  ...
+	  <%= yield :fb_opengraph %>
+	  ...
+	</head>
+	... 
+  </html>
 
 In the view: Create a content_for block to render the Open Graph meta tags
 
   <% content_for :fb_opengraph do %>
-	<%= raw @movie.fb_opengraph_meta_tags %>
+    <%= raw @movie.fb_opengraph_meta_tags %>
   <% end %>
 
   
