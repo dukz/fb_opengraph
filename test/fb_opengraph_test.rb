@@ -28,4 +28,13 @@ class FbOpengraphTest < ActiveSupport::TestCase
     assert fb_opengraph_meta_tags.include? '<meta xmlns:og="http://opengraphprotocol.org/schema/" property="og:title" content="The Rock" />'
     assert fb_opengraph_meta_tags.include? '<meta xmlns:og="http://opengraphprotocol.org/schema/" property="og:description" content="A group of U.S. Marines, under command of a renegade general, take over Alcatraz and threaten San Francisco Bay with biological weapons." />'
   end
+
+  test "fb_opengraph_meta_tag_options_take_precedence_over_default_options" do
+    fb_opengraph_meta_tags = @movie.fb_opengraph_meta_tags(:description => 'overwrite it', :url => 'http://www.imdb.com/')
+
+    assert (not fb_opengraph_meta_tags.include?('<meta xmlns:og="http://opengraphprotocol.org/schema/" property="og:description" content="A group of U.S. Marines, under command of a renegade general, take over Alcatraz and threaten San Francisco Bay with biological weapons." />'))
+    assert fb_opengraph_meta_tags.include? '<meta xmlns:og="http://opengraphprotocol.org/schema/" property="og:description" content="overwrite it" />'
+
+    assert fb_opengraph_meta_tags.include? '<meta xmlns:og="http://opengraphprotocol.org/schema/" property="og:url" content="http://www.imdb.com/" />'
+  end
 end

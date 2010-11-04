@@ -17,14 +17,13 @@ module HasFbOpengraph
   end
 
   module InstanceMethods
-    def fb_opengraph_meta_tags
+    def fb_opengraph_meta_tags(options = {})
+      opengraph_fields = self.fb_opengraph.merge(options)
       output = ''
-
-      self.fb_opengraph.each do |key, value|
+      opengraph_fields.each do |key, value|
         raw_value = (value.is_a?(Symbol) ? self.send(value) : value)
         output<< fb_opengraph_meta_tag(key, raw_value)
       end
-
       return output
     end
   end

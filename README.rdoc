@@ -30,7 +30,7 @@ In your layout: Create a yield block for the meta tags (I'd recommend using :fb_
 In the view: Create a content_for block to render the Open Graph meta tags
 
   <% content_for :fb_opengraph do %>
-    <%= raw @movie.fb_opengraph_meta_tags %>
+    <%= raw @movie.fb_opengraph_meta_tags(:url => movie_url(@movie)) %>
   <% end %>
 
   
