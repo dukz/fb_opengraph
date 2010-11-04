@@ -4,7 +4,7 @@ Allows you to easily define and render Open Graph Protocol metadata within your 
 
 ==Install
 
-  rails plugin install http://github.com/dukz/fb_opengraph.git
+  rails plugin install git://github.com/dukz/fb_opengraph.git
 
 ==Quick Start
 
