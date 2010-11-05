@@ -1,7 +1,7 @@
 module HasFbOpengraph
 
   def fb_opengraph_meta_tag(key, raw_value)
-    %(<meta xmlns:og="http://opengraphprotocol.org/schema/" property="og:#{key.to_s}" content="#{raw_value}" />)
+    %(<meta xmlns:og="http://opengraphprotocol.org/schema/" property="og:#{key.to_s}" content="#{ERB::Util.html_escape(raw_value)}" />)
   end
 
   def self.included(base)
@@ -22,7 +22,7 @@ module HasFbOpengraph
       output = ''
       opengraph_fields.each do |key, value|
         raw_value = (value.is_a?(Symbol) ? self.send(value) : value)
-        output<< fb_opengraph_meta_tag(key, raw_value)
+        output<< fb_opengraph_meta_tag(key, raw_value) if not raw_value.to_s.empty?
       end
       return output
     end
